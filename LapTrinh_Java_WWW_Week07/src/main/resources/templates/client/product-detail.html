@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>eCommerce Product Detail</title>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            overflow-x: hidden;
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        .card {
+            background: #fff;
+            padding: 3em;
+            line-height: 1.5em;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .wrapper {
+            display: flex;
+        }
+
+        .preview {
+            width: 50%;
+            padding-right: 20px;
+        }
+
+        .preview-pic img {
+            width: 100%;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .preview-thumbnail {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            margin-top: 15px;
+        }
+
+        .preview-thumbnail li {
+            width: 18%;
+            margin-right: 2.5%;
+        }
+
+        .preview-thumbnail img {
+            width: 100%;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .preview-thumbnail img:hover,
+        .preview-pic img:hover {
+            transform: scale(1.1);
+        }
+
+        .details {
+            width: 50%;
+        }
+
+        .product-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 0;
+        }
+
+        .rating {
+            display: flex;
+            align-items: center;
+        }
+
+        .stars {
+            color: #ff9f1a;
+        }
+
+        .review-no {
+            margin-left: 10px;
+            color: #6c757d;
+        }
+
+        .product-description {
+            margin-bottom: 15px;
+        }
+
+        .price {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .price span {
+            color: #ff9f1a;
+        }
+
+        .vote {
+            margin-bottom: 15px;
+            color: #6c757d;
+        }
+
+        .sizes span,
+        .colors span {
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 10px;
+            height: 30px;
+            width: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .sizes span {
+            background-color: #343a40;
+            color: #fff;
+            text-align: center;
+            line-height: 30px;
+        }
+
+        .colors span {
+            border: 2px solid #dee2e6;
+        }
+
+        .colors .not-available {
+            background-color: #fff;
+            border: 2px solid #e9ecef;
+        }
+
+        .action {
+            margin-top: 20px;
+        }
+
+        .add-to-cart,
+        .like {
+            background: #ff9f1a;
+            padding: 1em;
+            border: none;
+            text-transform: uppercase;
+            font-weight: bold;
+            color: #fff;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .add-to-cart:hover,
+        .like:hover {
+            background: #b36800;
+        }
+
+        .not-available:before {
+            font-family: 'Font Awesome';
+            content: "\f00d";
+            color: #fff;
+        }
+
+        .tooltip-inner {
+            padding: 1em;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <div class="card">
+        <div class="wrapper">
+            <div class="preview">
+                <div class="preview-pic tab-content">
+                    <div class="tab-pane active" id="pic-1"><img src="https://media.coolmate.me/cdn-cgi/image/quality=80,format=auto/uploads/March2023/s6.917_72.jpg" /></div>
+                    <div class="tab-pane" id="pic-2"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLkpyXjkYgMsCqnn2UHpj0NUCyJLTsolomAg&usqp=CAU" /></div>
+                    <div class="tab-pane" id="pic-3"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLkpyXjkYgMsCqnn2UHpj0NUCyJLTsolomAg&usqp=CAU" /></div>
+                    <div class="tab-pane" id="pic-4"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLkpyXjkYgMsCqnn2UHpj0NUCyJLTsolomAg&usqp=CAU" /></div>
+                    <div class="tab-pane" id="pic-5"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLkpyXjkYgMsCqnn2UHpj0NUCyJLTsolomAg&usqp=CAU" /></div>
+                </div>
+                <ul class="preview-thumbnail nav nav-tabs">
+                    <li class="active"><a data-target="#pic-1" data-toggle="tab"><img src="https://media.coolmate.me/cdn-cgi/image/quality=80,format=auto/uploads/March2023/s6.917_72.jpg" /></a></li>
+                    <li><a data-target="#pic-2" data-toggle="tab"><img src="https://media.coolmate.me/cdn-cgi/image/quality=100/uploads/July2023/ultra_fast-057-6.jpg" /></a></li>
+                    <li><a data-target="#pic-3" data-toggle="tab"><img src="https://media.coolmate.me/cdn-cgi/image/quality=100/uploads/July2023/ultra_fast-057-2.jpg   " /></a></li>
+                    <li><a data-target="#pic-4" data-toggle="tab"><img src="https://media.coolmate.me/cdn-cgi/image/quality=100/uploads/March2023/ss6.917_23.jpg" /></a></li>
+                    <li><a data-target="#pic-5" data-toggle="tab"><img src="https://media.coolmate.me/cdn-cgi/image/quality=100/uploads/March2023/ss6.917_23.jpg" /></a></li>
+                </ul>
+            </div>
+            <div class="details">
+                <h3 class="product-title">Shorts chạy bộ Ultra</h3>
+                <div class="rating">
+                    <div class="stars">
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                    </div>
+                    <span class="review-no">54 reviews</span>
+                </div>
+                <p class="product-description">Nhanh khô</p>
+                <h4 class="price">Current Price: <span>$180</span></h4>
+                <p class="vote"><strong>91%</strong> of buyers enjoyed this product! <strong>(1111 votes)</strong></p>
+                <h5 class="sizes">Sizes:
+                    <span class="size" data-toggle="tooltip" title="Small">S</span>
+                    <span class="size" data-toggle="tooltip" title="Medium">M</span>
+                    <span class="size" data-toggle="tooltip" title="Large">L</span>
+                    <span class="size" data-toggle="tooltip" title="Xtra Large">XL</span>
+                </h5>
+                <h5 class="colors">Colors:
+                    <span class="color orange not-available" data-toggle="tooltip" title="Not In Store"></span>
+                    <span class="color green"></span>
+                    <span class="color blue"></span>
+                </h5>
+                <div class="action">
+                    <button class="add-to-cart btn btn-primary" type="button">Add to Cart</button>
+                    <button class="like btn btn-danger" type="button"><span class="fa fa-heart"></span></button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

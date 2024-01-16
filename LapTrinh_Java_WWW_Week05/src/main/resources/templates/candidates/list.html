@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--https://github.com/eugenp/tutorials/blob/master/spring-web-modules/spring-thymeleaf-5/src/main/webapp/WEB-INF/views/listBooks.html-->
+<style>
+    div.inline {
+        color: black;
+        float: none;
+        padding: 5px 5px;
+        display: inline-block;
+    }
+    div.inline a.active {
+        background-color: #FBD603;
+        border:1px solid darkred;
+    }
+
+</style>
+<head>
+    <meta charset="UTF-8">
+    <title>Candidates with pagination</title>
+    <meta charset="UTF-8">
+    <title>Candidates</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+            crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<h1 class="text-center">LIST CANDIDATES</h1>
+<table class="table table-striped table-hover">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>dob</th>
+        <th>address</th>
+        <th>phone</th>
+        <th>email</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="candidate, iStat : ${candidatePage.content}">
+        <td th:text="${candidate.id}"></td>
+        <td th:text="${candidate.fullName}"></td>
+        <td th:text="${candidate.dob}"></td>
+        <td th:text="${candidate.address}"></td>
+        <td th:text="${candidate.phone}"></td>
+        <td th:text="${candidate.email}"></td>
+
+        <td><form th:action="@{/candidates/delete/{id}(id=${candidate.id})}" method="post">
+            <!-- Thêm nút submit để kích hoạt yêu cầu POST -->
+            <button type="submit">Delete</button>
+        </form></td>
+        <td><a th:href="@{/candidates/show-edit-form/{id}(id=${candidate.id})}" data-method="get">Edit</a></td>
+    </tr>
+    </tbody>
+</table>
+<div class="inline" th:if="${candidatePage.totalPages > 0}" th:each="pageNumber : ${pageNumbers}">
+    <a th:href="@{/candidates/list(page=${pageNumber}, size=${candidatePage.size})}"
+       th:text="${pageNumber}"
+       th:class="${pageNumber == candidatePage.number + 1} ? active"></a>
+
+</div>
+<br/>
+<div class="inline"><a href="/candidates/show-add-form">Add a new Candidate</a></div>
+</body>
+</html>

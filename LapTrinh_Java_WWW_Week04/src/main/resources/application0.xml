@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="add1" class="org.example.xmlbased.Address">
+        <property name="street" value="Nguyen Van Bao 12"/>
+        <property name="city" value="Saigon"/>
+        <property name="country" value="Vietnam"/>
+    </bean>
+
+    <bean id="add2" class="org.example.xmlbased.Address">
+        <property name="street" value="Nguyen Van Bao 13"/>
+        <property name="city" value="Saigon"/>
+        <property name="country" value="Vietnam"/>
+    </bean>
+
+    <bean id="person" class="org.example.xmlbased.Person">
+        <property name="name" value="Nguyen Thai Son 13"/>
+        <property name="addresses">
+            <list>
+                <ref bean="add1"/>
+                <ref bean="add2"/>
+            </list>
+        </property>
+        <property name="emails">
+            <list>
+                <value>teo@gmail.com</value>
+                <value>teo@hotmail.com</value>
+            </list>
+        </property>
+    </bean>
+
+</beans>
